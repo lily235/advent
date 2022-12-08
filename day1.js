@@ -22,5 +22,11 @@ void (async () => {
   });
 
   await new Promise((res) => rl.once('close', res));
+
+  if(currentCalories && currentCalories>resultCalories)
+  {
+    resultCalories = currentCalories;
+  }
+  
   console.log('resultCalories: ', resultCalories);
 })();
