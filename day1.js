@@ -1,32 +1,37 @@
+
+function readInputAsLines(filename) {
+  try {
+    const fs = require('fs');
+    const data = fs.readFileSync(filename, 'utf8');
+    const lines = data.split("\n");
+    return lines;
+  } catch (err) {
+    console.error(err);
+  }
+  return [];
+}
+
 var resultCalories=0;
 var currentCalories=0;
 
-const fs = require('fs');
-const readline = require('readline');
+readInputAsLines('testing.txt').forEach(lineCalory=> {
 
-void (async () => {
-  const rl = readline.createInterface({
-    input: fs.createReadStream('testing.txt'),
-    crlfDelay: Infinity,
-  });
+  if(Number(lineCalory)){
+    currentCalories+=Number(lineCalory);
+}else if(currentCalories>resultCalories){
+    resultCalories=currentCalories;
+    currentCalories = 0;
+}else{
+    currentCalories = 0;
+}
+});
 
-  rl.on('line', (line) => {
-    if(Number(line)){
-        currentCalories+=Number(line);
-    }else if(currentCalories>resultCalories){
-        resultCalories=currentCalories;
-        currentCalories = 0;
-    }else{
-        currentCalories = 0;
-    }
-  });
-
-  await new Promise((res) => rl.once('close', res));
-
-  if(currentCalories && currentCalories>resultCalories)
-  {
-    resultCalories = currentCalories;
-  }
-  
-  console.log('resultCalories: ', resultCalories);
-})();
+console.log('resultCalories: ', resultCalories);
+const array = [5, 3, 1, 6, 8];
+console.log(array);
+array.sort((a, b) => a - b);
+console.log(array);
+array.push(4);
+console.log(array);
+array.reverse();
+console.log(array);
