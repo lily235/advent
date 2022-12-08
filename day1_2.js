@@ -13,24 +13,19 @@ function readInputAsLines(filename) {
 
 var resultCalories=0;
 var CaloriesTops = [];
-var TempTops = [];
 var TopNumber = 3;
 
 var currentCalories=0;
 var NextBeReplaceNum;
 
 readInputAsLines('testing.txt').forEach(lineCalory=> {
-
   if(Number(lineCalory)){
     currentCalories+=Number(lineCalory);
   
 }else {
-  
-  TempTops = CaloriesTops;
-  TempTops.push(currentCalories);
-  TempTops.sort((a,b) => a - b);
-  TempTops.reverse();
-  CaloriesTops = TempTops.slice(0,TopNumber);
+  CaloriesTops.push(currentCalories);
+  CaloriesTops.sort((a,b) => b - a);
+  CaloriesTops.pop();
   currentCalories = 0;
 }
 });
