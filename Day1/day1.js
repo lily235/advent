@@ -27,11 +27,3 @@ readInputAsLines('testing.txt').forEach(lineCalory=> {
 });
 
 console.log('resultCalories: ', resultCalories);
-const array = [5, 3, 1, 6, 8];
-console.log(array);
-array.sort((a, b) => a - b);
-console.log(array);
-array.push(4);
-console.log(array);
-array.reverse();
-console.log(array);
