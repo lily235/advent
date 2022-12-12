@@ -13,36 +13,23 @@ function readInputAsLines(filename) {
   var totalScore=0;
   var opponentPlay;
   var myPlay;
-  
+  const result = [];
+  result["A X"] = 4;
+  result["B X"] = 1;
+  result["C X"] = 7;
+  result["A Y"] = 8;
+  result["B Y"] = 5;
+  result["C Y"] = 2;
+  result["A Z"] = 3;
+  result["B Z"] = 9;
+  result["C Z"] = 6;
+
   readInputAsLines('testing.txt').forEach(line=> {
     
     opponentPlay = line[0];
     myPlay = line[2];
-    if(myPlay == 'X'){
-        if(opponentPlay == 'A'){
-            totalScore+=4;
-        }else if(opponentPlay == 'B'){
-            totalScore+=1;
-        }else if(opponentPlay == 'C'){
-            totalScore+=7;
-        }
-    }else if(myPlay == 'Y'){
-        if(opponentPlay == 'A'){
-            totalScore+=8;
-        }else if(opponentPlay == 'B'){
-            totalScore+=5;
-        }else if(opponentPlay == 'C'){
-            totalScore+=2;
-        }
-    }else if(myPlay == 'Z'){
-        if(opponentPlay == 'A'){
-            totalScore+=3;
-        }else if(opponentPlay == 'B'){
-            totalScore+=9;
-        }else if(opponentPlay == 'C'){
-            totalScore+=6;
-        }
-    }
+
+    totalScore += result[opponentPlay + ' ' + myPlay];
   });
   
   console.log('totalScore: ', totalScore);
