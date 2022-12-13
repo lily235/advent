@@ -23,7 +23,7 @@ if(pairSectionsArray[0] > pairSectionsArray[3] || pairSectionsArray[2] > pairSec
 
 var totalScore = 0;
 
-readInputAsLines('t.txt').forEach(line=> {
+readInputAsLines('testing.txt').forEach(line=> {
 
 if(isFullyContained(line.replace(',','-').split('-').map(Number))){
     totalScore += 1;
