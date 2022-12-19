@@ -35,6 +35,52 @@ function MoveOutOneLevel(Path){
     return Path.slice(0,-(pathfiles[pathfiles.length-1].length + 1));
 }
 
+
+// Javascript program to print all
+// combination of size r in an array of size n
+
+	/* arr[] ---> Input Array
+	data[] ---> Temporary array to store current combination
+	start & end ---> Starting and Ending indexes in arr[]
+	index ---> Current index in data[]
+	r ---> Size of a combination to be printed */
+	function combinationUtil(arr,data,start,end,index,r,temparr,bigsize)
+	{
+       
+		// Current combination is ready to be printed, print it
+		if (index == r)
+		{
+            let temptotalsize = 0;
+			for (let j=0; j<r; j++){
+				temptotalsize += data[j];
+			}
+			if(temptotalsize < bigsize){
+                temparr.push(temptotalsize);
+            }
+		}
+		
+		// replace index with all possible elements. The condition
+		// "end-i+1 >= r-index" makes sure that including one element
+		// at index will make a combination with remaining elements
+		// at remaining positions
+		for (let i=start; i<=end && end-i+1 >= r-index; i++)
+		{
+			data[index] = arr[i];
+			combinationUtil(arr, data, i+1, end, index+1, r,temparr,bigsize);
+		}
+	}
+	
+	// The main function that prints all combinations of size r
+	// in arr[] of size n. This function mainly uses combinationUtil()
+	function GetAllCombination(arr,n,r,temparr,bigsize)
+	{
+		// A temporary array to store all combination one by one
+		let data = new Array(r);
+		
+		// Print all combination using temporary array 'data[]'
+		combinationUtil(arr, data, 0, n-1, 0, r,temparr,bigsize);
+	}
+
 readInputAsLines('t.txt').forEach(line=>{
     if(line === '$ ls'){
 
@@ -73,5 +119,32 @@ readInputAsLines('t.txt').forEach(line=>{
     
 });
 
-console.log(dirctorySizes);
+
+//get a total size of at most 100000
+var mostSize = 100000;
+var result=0;
+var temptotalsize=0;
+var oneDiretorySizes=[];
+var tempDirectorySizes=[];
+
+for (const pathKey in dirctorySizes) {
+    if(dirctorySizes[pathKey] < mostSize){
+        oneDiretorySizes.push(dirctorySizes[pathKey]);
+    }
+ }
+
+ let n = oneDiretorySizes.length;
+
+ for(let r=1;r<n+1;r++){
+    GetAllCombination(oneDiretorySizes, n, r,tempDirectorySizes,mostSize);
+}
+
+tempDirectorySizes.forEach(element=>{
+    if(element>result){
+        result=element;
+    }
+});
+console.log(result);
+
+
 
