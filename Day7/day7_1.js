@@ -81,7 +81,7 @@ function MoveOutOneLevel(Path){
 		combinationUtil(arr, data, 0, n-1, 0, r,temparr,bigsize);
 	}
 
-readInputAsLines('t.txt').forEach(line=>{
+readInputAsLines('input.txt').forEach(line=>{
     if(line === '$ ls'){
 
     }else if(line[0] === '$' && line.length > 4){
