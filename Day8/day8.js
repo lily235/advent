@@ -1,4 +1,3 @@
-// Write the solution for day 8 here
 
 function part1(input) {
 
