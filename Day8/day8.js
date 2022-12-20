@@ -60,4 +60,4 @@ function readInputAsLines(filename) {
 }
 
 console.log(part1(readInputAsLines("input.txt")));
-//console.log(part2(readInputAsLines("input.txt")));
+console.log(part2(readInputAsLines("input.txt")));
