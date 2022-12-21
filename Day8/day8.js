@@ -57,7 +57,72 @@ function part1(input) {
   return visibleNum;
 }
 
-function part2(_input) {}
+function leftViewScore(rowNum, columnNum, array) {
+  var viewScore = 0;
+  for (let i = columnNum - 1; i >= 0; i--) {
+    if (array[rowNum][i] < array[rowNum][columnNum]) {
+      viewScore++;
+    } else {
+      return viewScore + 1;
+    }
+  }
+  return viewScore;
+}
+
+function rightViewScore(rowNum, columnNum, array) {
+  var viewScore = 0;
+  for (let i = columnNum + 1; i < array[0].length; i++) {
+    if (array[rowNum][i] < array[rowNum][columnNum]) {
+      viewScore++;
+    } else {
+      return viewScore + 1;
+    }
+  }
+  return viewScore;
+}
+function TopViewScore(rowNum, columnNum, array) {
+  var viewScore = 0;
+  for (let i = rowNum - 1; i >= 0; i--) {
+    if (array[i][columnNum] < array[rowNum][columnNum]) {
+      viewScore++;
+    } else {
+      return viewScore + 1;
+    }
+  }
+  return viewScore;
+}
+
+function BottomViewScore(rowNum, columnNum, array) {
+  var viewScore = 0;
+
+  for (let i = rowNum + 1; i < array.length; i++) {
+    if (array[i][columnNum] < array[rowNum][columnNum]) {
+      viewScore++;
+    } else {
+      return viewScore + 1;
+    }
+  }
+  return viewScore;
+}
+
+function part2(input) {
+  var highestScore = 0;
+  input.forEach((line, index, array) => {
+    if (index != 0 && index != array.length - 1) {
+      for (let i = 1; i < line.length - 1; i++) {
+        var viewScore =
+          leftViewScore(index, i, array) *
+          rightViewScore(index, i, array) *
+          TopViewScore(index, i, array) *
+          BottomViewScore(index, i, array);
+        if (viewScore > highestScore) {
+          highestScore = viewScore;
+        }
+      }
+    }
+  });
+  return highestScore;
+}
 
 function readInputAsLines(filename) {
   try {
@@ -72,4 +137,4 @@ function readInputAsLines(filename) {
 }
 
 console.log(part1(readInputAsLines("input.txt")));
-//console.log(part2(readInputAsLines("input.txt")));
+console.log(part2(readInputAsLines("input.txt")));
