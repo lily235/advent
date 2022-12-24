@@ -50,7 +50,7 @@ function uniqueArrays(arr) {
   return uniqueArr.length;
 }
 
-function KnotsMotions(
+function knotsMotions(
   direction,
   stepNum,
   knotsPositions,
@@ -70,7 +70,7 @@ function KnotsMotions(
       knotsPositions[knotsPositions.length - 1][1],
     ]);
 
-    // tailVisitedPositions.push(knotsPositions[knotsPositions.length - 1]);
+    //tailVisitedPositions.push(knotsPositions[knotsPositions.length - 1]);
   }
 }
 
@@ -79,9 +79,11 @@ function multiKnotsFunc(input, knotsNum) {
   for (var i = 0; i < knotsNum; i++) {
     knotsPositions[i] = [0, 0];
   }
-  var tailVisitedPositions = [knotsPositions[knotsNum - 1]];
+  var tailVisitedPositions = [];
+  tailVisitedPositions.push(knotsPositions[knotsNum - 1]);
+
   input.forEach((line) => {
-    KnotsMotions(
+    knotsMotions(
       line.charAt(0),
       line.slice(2),
       knotsPositions,
