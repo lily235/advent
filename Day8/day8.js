@@ -80,7 +80,8 @@ function rightViewScore(rowNum, columnNum, array) {
   }
   return viewScore;
 }
-function TopViewScore(rowNum, columnNum, array) {
+
+function topViewScore(rowNum, columnNum, array) {
   var viewScore = 0;
   for (let i = rowNum - 1; i >= 0; i--) {
     if (array[i][columnNum] < array[rowNum][columnNum]) {
@@ -92,7 +93,7 @@ function TopViewScore(rowNum, columnNum, array) {
   return viewScore;
 }
 
-function BottomViewScore(rowNum, columnNum, array) {
+function bottomViewScore(rowNum, columnNum, array) {
   var viewScore = 0;
 
   for (let i = rowNum + 1; i < array.length; i++) {
@@ -113,8 +114,8 @@ function part2(input) {
         var viewScore =
           leftViewScore(index, i, array) *
           rightViewScore(index, i, array) *
-          TopViewScore(index, i, array) *
-          BottomViewScore(index, i, array);
+          topViewScore(index, i, array) *
+          bottomViewScore(index, i, array);
         if (viewScore > highestScore) {
           highestScore = viewScore;
         }
