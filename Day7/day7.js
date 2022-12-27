@@ -12,7 +12,6 @@ function readInputAsLines(filename) {
 
 var result = 0;
 var dirctorySizes = {};
-var dirctorySize = 0;
 var directoryPath = "";
 dirctorySizes["/"] = 0;
 
@@ -76,10 +75,7 @@ readInputAsLines("input.txt").forEach((line) => {
 //get a total size of at most 100000
 var mostSize = 100000;
 var result = 0;
-var temptotalsize = 0;
 var oneDiretorySizes = [];
-
-var tempDirectorySizes = [];
 
 for (const pathKey in dirctorySizes) {
   if (dirctorySizes[pathKey] < mostSize) {
