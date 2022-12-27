@@ -1,7 +1,5 @@
 function signalStrengthCheckAdd(curCircleNum, valueOfX) {
   if ((curCircleNum - 20) % 40 === 0) {
-    console.log(curCircleNum, valueOfX);
-
     return curCircleNum * valueOfX;
   } else {
     return 0;
