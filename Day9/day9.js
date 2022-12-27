@@ -11,14 +11,10 @@ function oneStepMoveHead(direction, headPosition) {
 }
 
 function isTwoKnotsNotTouching(oneKnot, nextKnot) {
-  if (
+  return !(
     Math.abs(oneKnot[0] - nextKnot[0]) < 2 &&
     Math.abs(oneKnot[1] - nextKnot[1]) < 2
-  ) {
-    return false;
-  } else {
-    return true;
-  }
+  );
 }
 
 function moveNextKnotTouched(oneKnot, nextKnot) {
